@@ -1,12 +1,15 @@
 class MemberStore:
 	"""docstring for MemberStore"""
 	members = []
+	last_id = 1
 
 	def get_all(self):
 		return MemberStore.members
 
 	def add(self, member):
+		member.id = MemberStore.last_id
 		self.members.append(member)
+		MemberStore.last_id += 1
 
 	def get_by_id(self, id):
 		all_mem = self.get_all()
@@ -17,16 +20,29 @@ class MemberStore:
 				break
 		return res
 
+	def entity_exists(self, member):
+		if member in get_by_id(member.id):
+			return True
+
+	def delete(self, id):
+		member = self.get_by_id(id)
+		MemberStore.members.remove(member)
+
+
+
+
 
 class PostStore:
 	"""docstring for PostStore"""
 	postsS = []
-
+	last_id = 1
 	def get_all(self):
 		return PostStore.postsS
 
 	def add(self, post):
+		post.id = PostStore.last_id
 		PostStore.postsS.append(post)
+		PostStore.last_id += 1
 
 	def get_by_id(self, id):
 		all_pos = self.get_all()
@@ -36,6 +52,17 @@ class PostStore:
 				res = post
 				break
 		return res
+
+	def entity_exists(self, post):
+		res = False
+		if self.get_by_id(post.id) :
+			res = True
+		return res
+
+	def delete(self, id):
+		post = self.get_by_id(id)
+		PostStore.postsS.remove(post)
+		
 
 
 		
