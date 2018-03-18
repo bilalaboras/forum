@@ -17,7 +17,8 @@ class MemberStore:
 			if member.id == id:
 
 				res = member
-			return res
+				break
+		return res
 
 
 class PostStore:
@@ -39,8 +40,9 @@ class PostStore:
 		for item1 in all_pos:
 			if post.id == id :
 				res = post
+				break
 
-			return res
+		return res
 
 
 		
