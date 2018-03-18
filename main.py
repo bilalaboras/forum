@@ -1,4 +1,5 @@
 import models
+import store
 
 member1=models.Member("Ali", 20)
 member2 = models.Member("Mohammed ", 30)
@@ -6,6 +7,12 @@ member2 = models.Member("Mohammed ", 30)
 post1 = models.Post("the first title ", "this is the first post")
 post2 = models.Post("the secend title ", "this is the second post")
 post3 = models.Post("the third title ", "this is the third post")
+
+mem_store = store.MemberStore()
+mem_store.add(member1)
+mem_store.add(member2)
+
+print(mem_store.get_all)
 
 #all_models=[member1, member2, post1, post2, post3]
 print("*" * 20)
