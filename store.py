@@ -3,7 +3,7 @@ class MemberStore:
 	members = []
 
 	def get_all(self):
-		return self.members
+		return MemberStore.members
 
 	def add(self, member):
 
