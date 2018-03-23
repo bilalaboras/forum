@@ -1,25 +1,24 @@
+import datetime
+
+
 class Member:
-	"""docstring for member"""
-	def __init__(self, name, age):
-		self.name = name
-		self.age = age
-		self.id = 0
+    def __init__(self, name, age):
+        self.id = 0
+        self.name = name
+        self.age = age
+        self.posts = []
 
-	def __str__(self):
-		return  "Name: {}, Age: {}".format(self.name, self.age)
-
+    def __str__(self):
+        return "Name: {}, Age: {}".format(self.name, self.age)
 
 
 class Post:
-	"""docstring for ClassName"""
-	def __init__(self, title, content):
-		self.title = title
-		self.content = content
-		self.id = 0
+    def __init__(self, title, content, member_id=0):
+        self.id = 0
+        self.title = title
+        self.content = content
+        self.member_id = member_id
+        self.date = datetime.datetime.now()
 
-	def __str__(self):
-		return "POST title: {},  POST content :{}".format(self.title, self.content)
-
-		
-		
-		
+    def __str__(self):
+        return f"Title: {self.title}, Content: {self.content}, Date: {self.date}"
