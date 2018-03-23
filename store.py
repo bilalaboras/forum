@@ -21,12 +21,23 @@ class MemberStore:
 		return res
 
 	def entity_exists(self, member):
-		if member in get_by_id(member.id):
-			return True
+		res = True
+		if self.get_by_id(member.id) is None:
+			res = False
+
+		return res
 
 	def delete(self, id):
 		member = self.get_by_id(id)
 		MemberStore.members.remove(member)
+
+	def update(self, member):
+		all_mem = self.get_all()
+		for i, me in enumerate(all_mem):
+			if member.id == me.id:
+				all_mem[i] = member
+				break
+				
 
 
 
@@ -54,9 +65,9 @@ class PostStore:
 		return res
 
 	def entity_exists(self, post):
-		res = False
-		if self.get_by_id(post.id) :
-			res = True
+		res = True
+		if self.get_by_id(post.id) is None :
+			res = False
 		return res
 
 	def delete(self, id):
